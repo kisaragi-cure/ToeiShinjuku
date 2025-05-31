@@ -46,7 +46,7 @@ background-color: #ffffff;
   <body>
 
 <nobr>
-<p> 都営新宿線　[自動更新：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024 / Ver.1.1 05/21</p>
+<p> 都営新宿線　[自動更新：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024 / Ver.1.1 05/31</p>
 
 <div style="position: absolute; top: 20px; left:10px; font-size:11pt"><p>本Webアプリが利用する公共交通データは、公共交通オープンデータセンターにおいて提供されるものです。交通事業者により提供されたデータを元に</p></div>
 <div style="position: absolute; top: 35px; left:10px; font-size:11pt"><p>していますが、必ずしも正確・完全なものとは限りません。本Webアプリの表示内容について、交通事業者への直接の問合せは行わないでください。</p></div>
@@ -511,6 +511,10 @@ background-color: #ffffff;
 <div style="position: absolute; top: 4860px; left:350px;  color:#00B5BE; font-size:14pt"><p>●</p></div> <!急行停車駅>
 <div style="position: absolute; top: 4860px; left:370px;  color:#ff0000; font-size:14pt"><p>●</p></div> <!急行停車駅>
 <div style="position: absolute; top: 4830px; left:310px; font-size:18pt"><p>(新線)新宿</p></div>
+<div style="position: absolute; top: 4790px; left:690px;  color:#0000ff; font-size:14pt"><p>●</p></div> <!快速停車駅>
+<div style="position: absolute; top: 4790px; left:710px;  color:#6DC62F; font-size:14pt"><p>●</p></div> <!区急停車駅>
+<div style="position: absolute; top: 4790px; left:730px;  color:#00B5BE; font-size:14pt"><p>●</p></div> <!急行停車駅>
+<div style="position: absolute; top: 4790px; left:750px;  color:#ff0000; font-size:14pt"><p>●</p></div> <!特急停車駅>
 <div style="position: absolute; top: 4810px; left:690px; font-size:18pt"><p>(京王)新宿</p></div>
 <div style="position: absolute; top: 4786px; left:460px; font-size:12pt"><p>5番　　　　　　4番</p></div>
 <div style="position: absolute; top: 4975px; left:640px; font-size:12pt"><p>3番　　　 2番　　　 1番</p></div>
@@ -592,6 +596,10 @@ background-color: #ffffff;
 <div id="ti24-23" style="position: absolute; top: 5425px; left:460px; font-size:12pt; "></div>
 <div id="ti24-23c" style="position: absolute; top: 5480px; left:450px; font-size:12pt; color:#FF0000; "></div>
 
+<div style="position: absolute; top: 5670px; left:310px;  color:#0000ff; font-size:14pt"><p>●</p></div> <!快速停車駅>
+<div style="position: absolute; top: 5670px; left:330px;  color:#6DC62F; font-size:14pt"><p>●</p></div> <!区急停車駅>
+<div style="position: absolute; top: 5670px; left:350px;  color:#00B5BE; font-size:14pt"><p>●</p></div> <!急行停車駅>
+<div style="position: absolute; top: 5670px; left:370px;  color:#ff0000; font-size:14pt"><p>●</p></div> <!急行停車駅>
 <div style="position: absolute; top: 5640px; left:310px; font-size:18pt"><p>笹　塚</p></div>
 <div id="ti24-1ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ti24-1a" disabled / name="address" size="14" value=""　></div>
 <div id="ti24-1b" style="position: absolute; top: 5640px; left:710px; font-size:12pt; "></div>
@@ -2953,6 +2961,7 @@ case '"114"':
 case '"120"':
 	dest = "本";
 	break;
+case '"000"':
 case '"300"':
 	dest = "―";
 	break;
@@ -3269,6 +3278,7 @@ case '"114"':
 case '"120"':
 	dest = "本";
 	break;
+case '"000"':
 case '"300"':
 	dest = "―";
 	break;

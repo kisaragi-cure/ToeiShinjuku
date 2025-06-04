@@ -48,10 +48,10 @@ background-color: #ffffff;
 <nobr>
 <p> 都営新宿線　[自動更新：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024 / Ver.1.2 06/03</p>
 
-<div style="position: absolute; top: 20px; left:10px; font-size:11pt"><p>本Webアプリが利用する公共交通データは、公共交通オープンデータセンターにおいて提供されるものです。交通事業者により提供されたデータを元に</p></div>
-<div style="position: absolute; top: 35px; left:10px; font-size:11pt"><p>していますが、必ずしも正確・完全なものとは限りません。本Webアプリの表示内容について、交通事業者への直接の問合せは行わないでください。</p></div>
+<div style="position: absolute; top: 20px; left:10px; font-size:10pt"><p>本Webアプリが利用する公共交通データは、公共交通オープンデータセンターにおいて提供されるものです。交通事業者により提供されたデータを元に</p></div>
+<div style="position: absolute; top: 35px; left:10px; font-size:10pt"><p>していますが、必ずしも正確・完全なものとは限りません。本Webアプリの表示内容について、交通事業者への直接の問合せは行わないでください。</p></div>
 
-<div style="position: absolute; top: 65px; left:10px; font-size:11pt"><p>本Webアプリに関するお問い合わせ先(X)@cure_kisaragi</p></div>
+<div style="position: absolute; top: 65px; left:10px; font-size:10pt"><p>本Webアプリに関するお問い合わせ先(X)@cure_kisaragi</p></div>
 <br>
 <br>
 <br>
@@ -565,9 +565,9 @@ background-color: #ffffff;
 
 <!初台-幡ヶ谷>
 <div id="ti22-23ad" style="position: absolute; top:-100px; left:-100px;"><input type="text"  id = "ti22-23a" disabled / name="address" size="14" value=""　></div>
-<div id="ti22-23b" style="position: absolute; top: 5235px; left:515px; font-size:12pt; "></div>
-<div id="ti22-23" style="position: absolute; top: 5235px; left:525px; font-size:12pt; "></div>
-<div id="ti22-23c" style="position: absolute; top: 5290px; left:515px; font-size:12pt; color:#FF0000; "></div>
+<div id="ti22-23b" style="position: absolute; top: 5237px; left:515px; font-size:12pt; "></div>
+<div id="ti22-23" style="position: absolute; top: 5237px; left:525px; font-size:12pt; "></div>
+<div id="ti22-23c" style="position: absolute; top: 5292px; left:515px; font-size:12pt; color:#FF0000; "></div>
 <div id="ti23-22ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ti23-22a" disabled / name="address" size="14" value=""　></div>
 <div id="ti23-22b" style="position: absolute; top: 5220px; left:450px; font-size:12pt; "></div>
 <div id="ti23-22" style="position: absolute; top: 5220px; left:460px; font-size:12pt; "></div>
@@ -661,6 +661,16 @@ background-color: #ffffff;
 <div id="ti24-214b" style="position: absolute; top: 5380px; left:645px; font-size:12pt; "></div>
 <div id="ti24-214" style="position: absolute; top: 5380px; left:655px; font-size:12pt; "></div>
 <div id="ti24-214c" style="position: absolute; top: 5435px; left:645px; font-size:12pt; color:#FF0000; "></div>
+
+<!笹塚-代田橋>
+<div id="ti24-25ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ti24-25a" disabled / name="address" size="14" value=""　></div>
+<div id="ti24-25b" style="position: absolute; top: 5830px; left:710px; font-size:12pt; "></div>
+<div id="ti24-25" style="position: absolute; top: 5830px; left:720px; font-size:12pt; "></div>
+<div id="ti24-25c" style="position: absolute; top: 5885px; left:710px; font-size:12pt; color:#FF0000; "></div>
+<div id="ti25-24ad" style="position: absolute; top:-100px; left:-100px;"><input type="text"  id = "ti25-24a" disabled / name="address" size="14" value=""　></div>
+<div id="ti25-24b" style="position: absolute; top: 5830px; left:480px; font-size:12pt; "></div>
+<div id="ti25-24" style="position: absolute; top: 5830px; left:490px; font-size:12pt; "></div>
+<div id="ti25-24c" style="position: absolute; top: 5885px; left:480px; font-size:12pt; color:#FF0000; "></div>
 
 <div style="position: absolute; top: 5495px; left:290px; font-size:18pt"><p></p></div>
 <div id="ti25-1ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ti25-1a" disabled / name="address" size="14" value=""　></div>
@@ -886,6 +896,8 @@ for ( m = m; m < len3; m++) {
 
 }
 //新宿東行発車
+	let junban = 0;
+
 	let kind5 = '';
 	let des5 = '';
 	let dep5 = '';
@@ -933,9 +945,9 @@ if ( dest2 == undefined ){
 
 
 now = Math.floor(Date.now() / 60000) ;
-	
+junban = 10;
 
-for ( n = len - 1 ; n > -1 ; n--) {
+for ( n = 0 ; n < len ; n++) {
 
 
 
@@ -1402,7 +1414,7 @@ case ('"odpt.Station:Toei.Shinjuku.Mizue"'):
 	switch ( scid) {
 	case ( 'null' ):
 	if ( trid == '"odpt.RailDirection:Eastbound"' ) {
-	if ( des == '高'){
+	if ( kind == "急"){
 		nameText = document.getElementById('ti03-4a');
 		target = document.getElementById('ti03-4ad');
 		doc2= document.getElementById("ti03-4"); 
@@ -1415,6 +1427,7 @@ case ('"odpt.Station:Toei.Shinjuku.Mizue"'):
 		doc0= document.getElementById("ti03-3b");  
 		doc1= document.getElementById("ti03-3c");  
 
+	}
 	if ( newkind[unban2] != undefined){
 	if ( kind1 == '' || dep1 > newkind[unban2].replaceAll('"','')){
 		kind2 = kind1 ;
@@ -1437,9 +1450,8 @@ case ('"odpt.Station:Toei.Shinjuku.Mizue"'):
 		ptf2 = dest[unban2].replaceAll('"','');
 	}
 	}
-	}
 	} else {
-	if ( ori == '["odpt.Station:Toei.Mita.Takashimadaira"]' ){
+	if ( kind == "急" ){
 		nameText = document.getElementById('ti03-1a');
 		target = document.getElementById('ti03-1ad');
 		doc2= document.getElementById("ti03-1"); 
@@ -1703,7 +1715,7 @@ if ( kind == "急" && des == "本" ){
      ojm01 = 1 ;
 }
 	} else {
-	if ( ori == '["odpt.Station:Toei.Mita.Takashimadaira"]' || ( kind == '各' && sessionStorage.getItem("ojm2") == 0) ){
+	if ( ori == '["odpt.Station:Toei.Shinjuku.Ojima"]' || ( kind == '各' && sessionStorage.getItem("ojm2") == 0) ){
 		nameText = document.getElementById('ti07-3a');
 		target = document.getElementById('ti07-3ad');
 		doc2= document.getElementById("ti07-3"); 
@@ -1716,7 +1728,7 @@ if ( kind == "急" && des == "本" ){
 		doc0= document.getElementById("ti07-1b");  
 		doc1= document.getElementById("ti07-1c");  
 	}
-if ( kind == "急" ){
+if ( kind == "急" && ori == '["odpt.Station:Toei.Shinjuku.Motoyawata"]'){
      ojm02 = 1 ;
 }
 	}
@@ -2244,7 +2256,8 @@ case ('"odpt.Station:Toei.Shinjuku.Kudanshita"'):
 		doc0= document.getElementById("ti17-2b");  
 		doc1= document.getElementById("ti17-2c");  
 	if ( index[unban1] != undefined){
-		if ( kind5 == '' ){
+		if ( junban > 7 ){
+		junban = 8;
 		kind5 = kindna[index[unban1]].replaceAll('"','');
 		des5 = desna[index[unban1]].replaceAll('"','');
 		dep5 = newkinda[index[unban1]].replaceAll('"','');
@@ -2273,7 +2286,8 @@ case ('"odpt.Station:Toei.Shinjuku.Kudanshita"'):
 		doc0= document.getElementById("ti17-16b");  
 		doc1= document.getElementById("ti17-16c");   
 	if ( index[unban1] != undefined){
-		if ( kind5 == '' ){
+		if ( junban > 8 ){
+		junban = 9;
 		kind5 = kindna[index[unban1]].replaceAll('"','');
 		des5 = desna[index[unban1]].replaceAll('"','');
 		dep5 = newkinda[index[unban1]].replaceAll('"','');
@@ -2312,7 +2326,8 @@ case ('"odpt.Station:Toei.Shinjuku.Ichigaya"'):
 		doc0= document.getElementById("ti18-2b");  
 		doc1= document.getElementById("ti18-2c");  
 	if ( index[unban1] != undefined){
-		if ( kind5 == '' ){
+		if ( junban > 5 ){
+		junban = 6;
 		kind5 = kindna[index[unban1]].replaceAll('"','');
 		des5 = desna[index[unban1]].replaceAll('"','');
 		dep5 = newkinda[index[unban1]].replaceAll('"','');
@@ -2342,7 +2357,8 @@ case ('"odpt.Station:Toei.Shinjuku.Ichigaya"'):
 		doc0= document.getElementById("ti18-17b");  
 		doc1= document.getElementById("ti18-17c"); 
 	if ( index[unban1] != undefined){
-		if ( kind5 == '' ){
+		if ( junban > 6 ){
+		junban = 7;
 		kind5 = kindna[index[unban1]].replaceAll('"','');
 		des5 = desna[index[unban1]].replaceAll('"','');
 		dep5 = newkinda[index[unban1]].replaceAll('"','');
@@ -2397,7 +2413,8 @@ case ('"odpt.Station:Toei.Shinjuku.Akebonobashi"'):
 		doc0= document.getElementById("ti19-2b");  
 		doc1= document.getElementById("ti19-2c"); 
 	if ( index[unban1] != undefined){
-		if ( kind5 == '' ){
+		if ( junban > 3 ){
+		junban = 4;
 		kind5 = kindna[index[unban1]].replaceAll('"','');
 		des5 = desna[index[unban1]].replaceAll('"','');
 		dep5 = newkinda[index[unban1]].replaceAll('"','');
@@ -2442,7 +2459,8 @@ case ('"odpt.Station:Toei.Shinjuku.Akebonobashi"'):
 		doc0= document.getElementById("ti19-18b");  
 		doc1= document.getElementById("ti19-18c");  
 	if ( index[unban1] != undefined){
-		if ( kind5 == '' ){
+		if ( junban > 4 ){
+		junban = 5;
 		kind5 = kindna[index[unban1]].replaceAll('"','');
 		des5 = desna[index[unban1]].replaceAll('"','');
 		dep5 = newkinda[index[unban1]].replaceAll('"','');
@@ -2498,6 +2516,8 @@ case ('"odpt.Station:Toei.Shinjuku.ShinjukuSanchome"'):
 		doc1= document.getElementById("ti20-2c");  
 
 	if ( index[unban1] != undefined){
+		if ( junban > 1 ){
+		junban = 2;
 		kind5 = kindna[index[unban1]].replaceAll('"','');
 		des5 = desna[index[unban1]].replaceAll('"','');
 		dep5 = newkinda[index[unban1]].replaceAll('"','');
@@ -2509,6 +2529,7 @@ case ('"odpt.Station:Toei.Shinjuku.ShinjukuSanchome"'):
 		dep6 = newkinda[index[unban1] +1 ].replaceAll('"','');
 		num6 = desta[index[unban1] +1 ].replaceAll('"','');
 		ptf6 = from[index[unban1] +1 ].replaceAll('"','');
+	}
 	}
 
 	} else {
@@ -2541,7 +2562,8 @@ case ('"odpt.Station:Toei.Shinjuku.ShinjukuSanchome"'):
 		doc0= document.getElementById("ti20-19b");  
 		doc1= document.getElementById("ti20-19c");  
 	if ( index[unban1] != undefined){
-		if ( kind5 == '' ){
+		if ( junban > 2 ){
+		junban = 3;
 		kind5 = kindna[index[unban1]].replaceAll('"','');
 		des5 = desna[index[unban1]].replaceAll('"','');
 		dep5 = newkinda[index[unban1]].replaceAll('"','');
@@ -2590,6 +2612,7 @@ case ('"odpt.Station:Toei.Shinjuku.Shinjuku"'):
 		doc0= document.getElementById("ti21-20b");  
 		doc1= document.getElementById("ti21-20c");  
 	if ( index[unban1] != undefined){
+		junban = 1;
 		kind5 = kindna[index[unban1]].replaceAll('"','');
 		des5 = desna[index[unban1]].replaceAll('"','');
 		dep5 = newkinda[index[unban1]].replaceAll('"','');
@@ -2647,7 +2670,7 @@ break ;
 }
 
 //京王結合
-	if ( localStorage.getItem( 'ts' + unban + 'sy' ) != null ){
+	if ( localStorage.getItem( 'ts' + unban + 'sy' ) != null &&  localStorage.getItem( 'ts' + unban + 'sy' ) != 'null' ){
 	 if( localStorage.getItem( 'ts' + unban + 'time' ) -(- 30) <= now ){
 		
 		localStorage.removeItem( 'ts' + unban + 'sy'  );
@@ -3005,6 +3028,9 @@ case '"027"':
 case '"032"':
 	dest = "王";
 	break;
+case '"042"':
+	dest = "尾";
+	break;
 case '"043"':
 	dest = "山";
 	break;
@@ -3017,8 +3043,14 @@ case '"050"':
 case '"054"':
 	dest = "橋";
 	break;
+case '"107"':
+	dest = "岩";
+	break;
 case '"114"':
 	dest = "大";
+	break;
+case '"118"':
+	dest = "瑞";
 	break;
 case '"120"':
 	dest = "本";
@@ -3048,7 +3080,7 @@ if ( delay == "0"){
 }
 
       info =   '　　'+ dest + '<br/>' +  '&nbsp;' +　retsuban +　 '<br/>' +  ''  +　 '<br/>' +  '　　' ;
-	if ( localStorage.getItem( 'ko' + retsuban + 'tr' ) != null ){
+	if ( localStorage.getItem( 'ko' + retsuban + 'tr' ) != null &&  localStorage.getItem( 'ko' + retsuban + 'tr' ) != 'null' ){
 	 if( localStorage.getItem( 'ko' + retsuban + 'time' ) -(- 30) <= now ){
 		
 		localStorage.removeItem( 'ko' + retsuban + 'tr'  );
@@ -3322,6 +3354,9 @@ case '"027"':
 case '"032"':
 	dest = "王";
 	break;
+case '"042"':
+	dest = "尾";
+	break;
 case '"043"':
 	dest = "山";
 	break;
@@ -3334,8 +3369,14 @@ case '"050"':
 case '"054"':
 	dest = "橋";
 	break;
+case '"107"':
+	dest = "岩";
+	break;
 case '"114"':
 	dest = "大";
+	break;
+case '"118"':
+	dest = "瑞";
 	break;
 case '"120"':
 	dest = "本";
@@ -3362,7 +3403,7 @@ if ( delay == "0"){
 
       info =   '　　'+ dest + '<br/>' +  '&nbsp;' +　retsuban +　 '<br/>' +  ''  +　 '<br/>' +  '　　' ;
 
-	if ( localStorage.getItem( 'ko' + retsuban + 'tr' ) != null ){
+	if ( localStorage.getItem( 'ko' + retsuban + 'tr' ) != null && localStorage.getItem( 'ko' + retsuban + 'tr' ) != 'null'  ){
 	 if( localStorage.getItem( 'ko' + retsuban + 'time' ) -(- 30) <= now ){
 		
 		localStorage.removeItem( 'ko' + retsuban  + 'tr');
@@ -3507,6 +3548,13 @@ case '"U001"': //笹塚→京王新宿
 	}
 	}
 	}
+	break;
+case '"U002"': //代田橋→笹塚
+	nameText = document.getElementById('ti25-24a');
+	target = document.getElementById('ti25-24ad');
+	doc2= document.getElementById("ti25-24"); 
+	doc0= document.getElementById("ti25-24b");  
+	doc1= document.getElementById("ti25-24c"); 
 	break;
 default:
 	doc0= document.getElementById("ty99");  

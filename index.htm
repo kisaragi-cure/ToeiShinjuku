@@ -46,7 +46,7 @@ background-color: #ffffff;
   <body>
 
 <nobr>
-<p> 都営新宿線　[自動更新：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024 / Ver.1.21 06/06</p>
+<p> 都営新宿線　[自動更新：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024 / Ver.1.21 06/08</p>
 
 <div style="position: absolute; top: 20px; left:10px; font-size:10pt"><p>本Webアプリが利用する公共交通データは、公共交通オープンデータセンターにおいて提供されるものです。交通事業者により提供されたデータを元に</p></div>
 <div style="position: absolute; top: 35px; left:10px; font-size:10pt"><p>していますが、必ずしも正確・完全なものとは限りません。本Webアプリの表示内容について、交通事業者への直接の問合せは行わないでください。</p></div>
@@ -590,9 +590,9 @@ background-color: #ffffff;
 
 <!幡ヶ谷-笹塚>
 <div id="ti23-24ad" style="position: absolute; top:-100px; left:-100px;"><input type="text"  id = "ti23-24a" disabled / name="address" size="14" value=""　></div>
-<div id="ti23-24b" style="position: absolute; top: 5580px; left:625px; font-size:12pt; "></div>
-<div id="ti23-24" style="position: absolute; top: 5580px; left:635px; font-size:12pt; "></div>
-<div id="ti23-24c" style="position: absolute; top: 5635px; left:625px; font-size:12pt; color:#FF0000; "></div>
+<div id="ti23-24b" style="position: absolute; top: 5588px; left:625px; font-size:12pt; "></div>
+<div id="ti23-24" style="position: absolute; top: 5588px; left:635px; font-size:12pt; "></div>
+<div id="ti23-24c" style="position: absolute; top: 5643px; left:625px; font-size:12pt; color:#FF0000; "></div>
 <div id="ti24-23ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ti24-23a" disabled / name="address" size="14" value=""　></div>
 <div id="ti24-23b" style="position: absolute; top: 5420px; left:450px; font-size:12pt; "></div>
 <div id="ti24-23" style="position: absolute; top: 5420px; left:460px; font-size:12pt; "></div>
@@ -687,6 +687,20 @@ background-color: #ffffff;
 <div id="ti25-2b" style="position: absolute; top: 6010px; left:480px; font-size:12pt; "></div>
 <div id="ti25-2" style="position: absolute; top: 6010px; left:490px; font-size:12pt; "></div>
 <div id="ti25-2c" style="position: absolute; top: 6065px; left:480px; font-size:12pt; color:#FF0000; "></div>
+
+<!代田橋-明大前>
+<div id="ti25-26ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ti25-26a" disabled / name="address" size="14" value=""　></div>
+<div id="ti25-26b" style="position: absolute; top: 6105px; left:545px; font-size:12pt; "></div>
+<div id="ti25-26" style="position: absolute; top: 6105px; left:555px; font-size:12pt; "></div>
+<div id="ti25-26c" style="position: absolute; top: 6160px; left:545px; font-size:12pt; color:#FF0000; "></div>
+<div id="ti26-25ad" style="position: absolute; top:-100px; left:-100px;"><input type="text"  id = "ti26-25a" disabled / name="address" size="14" value=""　></div>
+<div id="ti26-25b" style="position: absolute; top: 6105px; left:480px; font-size:12pt; "></div>
+<div id="ti26-25" style="position: absolute; top: 6105px; left:490px; font-size:12pt; "></div>
+<div id="ti26-25c" style="position: absolute; top: 6160px; left:480px; font-size:12pt; color:#FF0000; "></div>
+<div id="ti26-251ad" style="position: absolute; top:-100px; left:-100px;"><input type="text"  id = "ti26-251a" disabled / name="address" size="14" value=""　></div>
+<div id="ti26-251b" style="position: absolute; top: 6115px; left:400px; font-size:12pt; "></div>
+<div id="ti26-251" style="position: absolute; top: 6115px; left:410px; font-size:12pt; "></div>
+<div id="ti26-251c" style="position: absolute; top: 6270px; left:400px; font-size:12pt; color:#FF0000; "></div>
 
 <div style="position: absolute; top: 5590px; left:695px; color:#ffffff; font-size:12pt"><p></p></div>
 <div id="ti25dep11" style="position: absolute; top: 5630px; left:705px; color:#ffffff; font-size:12pt; "></div>
@@ -3003,6 +3017,9 @@ case '"1"':
 case '"9"':
 	kind = "ラ";
 	break;
+case '"11"':
+	kind = "Mt";
+	break;
 default:
 	kind = "　";
 	break;
@@ -3348,6 +3365,9 @@ case '"1"':
 case '"9"':
 	kind = "ラ";
 	break;
+case '"11"':
+	kind = "Mt";
+	break;
 default:
 	kind = "　";
 	break;
@@ -3598,6 +3618,28 @@ case '"U002"': //代田橋→笹塚
 	doc2= document.getElementById("ti25-241"); 
 	doc0= document.getElementById("ti25-241b");  
 	doc1= document.getElementById("ti25-241c"); 
+	}
+	break;
+case '"D004"': //代田橋→明大前
+	nameText = document.getElementById('ti25-26a');
+	target = document.getElementById('ti25-26ad');
+	doc2= document.getElementById("ti25-26"); 
+	doc0= document.getElementById("ti25-26b");  
+	doc1= document.getElementById("ti25-26c"); 
+	break;
+case '"U003"': //明大前→代田橋
+	nameText = document.getElementById('ti26-25a');
+	if ( nameText.value == "" ){
+	target = document.getElementById('ti26-25ad');
+	doc2= document.getElementById("ti26-25"); 
+	doc0= document.getElementById("ti26-25b");  
+	doc1= document.getElementById("ti26-25c"); 
+	}else{ 
+	nameText = document.getElementById('ti26-251a');
+	target = document.getElementById('ti26-251ad');
+	doc2= document.getElementById("ti26-251"); 
+	doc0= document.getElementById("ti26-251b");  
+	doc1= document.getElementById("ti26-251c"); 
 	}
 	break;
 default:

@@ -46,7 +46,7 @@ background-color: #ffffff;
   <body>
 
 <nobr>
-<p> 都営新宿線　[自動更新：15秒]　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024-2026 / Ver.1.31 01/20</p>
+<p> 都営新宿線　[自動更新：15秒]　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024-2026 / Ver.2.00 02/03</p>
 
 <div style="position: absolute; top: 20px; left:10px; font-size:10pt"><p>本Webアプリが利用する公共交通データは、公共交通オープンデータセンターにおいて提供されるものです。交通事業者により提供されたデータを元に</p></div>
 <div style="position: absolute; top: 35px; left:10px; font-size:10pt"><p>していますが、必ずしも正確・完全なものとは限りません。本Webアプリの表示内容について、交通事業者への直接の問合せは行わないでください。</p></div>
@@ -3175,6 +3175,47 @@ case '"null"':
 	break;
 }
 
+//編成設定
+
+var car = JSON.stringify(data2.TS[n].ps[m].sr) ;
+	switch (car) {
+case '"8"':
+	car = "⑧";
+	break;
+case '"10"':
+	car = "⑩";
+	break;
+default:
+	car = "　";
+	break;
+}
+
+var type = JSON.stringify(data2.TS[n].ps[m].sk) ;
+	switch (type) {
+case '"7"':
+	type = "7K";
+	break;
+case '"8"':
+	type = "8K";
+	break;
+case '"9"':
+	type = "9K";
+	break;
+case '"5"':
+	type = "5K";
+	break;
+case '"2"':
+	type = "2K";
+	break;
+case '"0"':
+	type = "都";
+	break;
+default:
+	type = "　";
+	break;
+}
+
+
 if ( delay == "0"){
  delay = "" ;
 } else if ( delay < 10 ) {
@@ -3183,7 +3224,7 @@ if ( delay == "0"){
  delay = "　" + delay　+ "　";
 }
 
-      info =   '　　'+ dest + '<br/>' +  '&nbsp;' +　retsuban +　 '<br/>' +  ''  +　 '<br/>' +  '　　' ;
+      info =   '　　'+ dest + '<br/>' +  '&nbsp;' +　retsuban +　 '<br/>' +  '&nbsp;' + type + car  +　 '<br/>' +  '　　' ;
 	if ( localStorage.getItem( 'ko' + retsuban + 'tr' ) != null &&  localStorage.getItem( 'ko' + retsuban + 'tr' ) != 'null' ){
 	 if( localStorage.getItem( 'ko' + retsuban + 'time' ) -(- 30) <= now ){
 		
@@ -3191,7 +3232,7 @@ if ( delay == "0"){
 		localStorage.removeItem( 'ko' + retsuban  + 'time' );
 	} 
 
-        info =   '　　'+ dest + '<br/>' +  '　' +　localStorage.getItem( 'ko' + retsuban + 'tr' ) +　 '<br/>' +  '=' + retsuban +　 '<br/>' +  '　　' ;
+        info =   '　　'+ dest + '<br/>' +  '　' +　localStorage.getItem( 'ko' + retsuban + 'tr' ) +　 '<br/>' +  '&nbsp;' + type + car  +　 '<br/>' +  '　　' ;
 	}
 
 	 if( sessionStorage.getItem( 'D102time' ) -(- 30) <= now ){
@@ -3541,6 +3582,7 @@ default:
 	break;
 }
 
+
 //行先設定
 var dest = JSON.stringify(data2.TB[n].ps[m].ik_tr) ;
 	switch (dest) {
@@ -3610,6 +3652,48 @@ case '"null"':
 	break;
 }
 
+//編成設定
+
+var car = JSON.stringify(data2.TB[n].ps[m].sr) ;
+	switch (car) {
+case '"8"':
+	car = "⑧";
+	break;
+case '"10"':
+	car = "⑩";
+	break;
+default:
+	car = "　";
+	break;
+}
+
+var type = JSON.stringify(data2.TB[n].ps[m].sk) ;
+	switch (type) {
+case '"7"':
+	type = "7K";
+	break;
+case '"8"':
+	type = "8K";
+	break;
+case '"9"':
+	type = "9K";
+	break;
+case '"5"':
+	type = "5K";
+	break;
+case '"2"':
+	type = "2K";
+	break;
+case '"0"':
+	type = "都";
+	break;
+
+default:
+	type = "　";
+	break;
+}
+
+
 if ( delay == "0"){
  delay = "" ;
 } else if ( delay < 10 ) {
@@ -3618,7 +3702,7 @@ if ( delay == "0"){
  delay = "　" + delay　+ "　";
 }
 
-      info =   '　　'+ dest + '<br/>' +  '&nbsp;' +　retsuban +　 '<br/>' +  ''  +　 '<br/>' +  '　　' ;
+      info =   '　　'+ dest + '<br/>' +  '&nbsp;' +　retsuban +　 '<br/>' +  '&nbsp;' + type + car  +　 '<br/>' + '　　' ;
 
 	if ( localStorage.getItem( 'ko' + retsuban + 'tr' ) != null && localStorage.getItem( 'ko' + retsuban + 'tr' ) != 'null'  ){
 	 if( localStorage.getItem( 'ko' + retsuban + 'time' ) -(- 30) <= now ){
@@ -3626,7 +3710,7 @@ if ( delay == "0"){
 		localStorage.removeItem( 'ko' + retsuban  + 'tr');
 		localStorage.removeItem( 'ko' + retsuban  + 'time' );
 	}
-        info =   '　　'+ dest + '<br/>' +  '　' +　localStorage.getItem( 'ko' + retsuban + 'tr' ) +　 '<br/>' +  '=' + retsuban +　 '<br/>' +  '　　' ;
+        info =   '　　'+ dest + '<br/>' +  '　' +　localStorage.getItem( 'ko' + retsuban + 'tr' ) +　 '<br/>' +  '&nbsp;' + type + car +　 '<br/>' +  '　　' ;
 	}
 
 

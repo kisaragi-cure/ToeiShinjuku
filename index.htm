@@ -829,6 +829,35 @@ background-color: #ffffff;
 <div id="ti30-4" style="position: absolute; top: 7250px; left:420px; font-size:12pt; "></div>
 <div id="ti30-4c" style="position: absolute; top: 7305px; left:410px; font-size:12pt; color:#FF0000; "></div>
 
+<!八幡山-芦花公園>
+<div id="ti30-31ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ti30-31a" disabled / name="address" size="14" value=""　></div>
+<div id="ti30-31b" style="position: absolute; top: 7480px; left:545px; font-size:12pt; "></div>
+<div id="ti30-31" style="position: absolute; top: 7480px; left:555px; font-size:12pt; "></div>
+<div id="ti30-31c" style="position: absolute; top: 7535px; left:545px; font-size:12pt; color:#FF0000; "></div>
+<div id="ti31-30ad" style="position: absolute; top:-100px; left:-100px;"><input type="text"  id = "ti31-30a" disabled / name="address" size="14" value=""　></div>
+<div id="ti31-30b" style="position: absolute; top: 7480px; left:480px; font-size:12pt; "></div>
+<div id="ti31-30" style="position: absolute; top: 7480px; left:490px; font-size:12pt; "></div>
+<div id="ti31-30c" style="position: absolute; top: 7535px; left:480px; font-size:12pt; color:#FF0000; "></div>
+
+<div style="position: absolute; top: 7570px; left:310px; font-size:18pt"><p>芦花公園</p></div>
+<div id="ti31-1ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ti31-1a" disabled / name="address" size="14" value=""　></div>
+<div id="ti31-1b" style="position: absolute; top: 7570px; left:545px; font-size:12pt; "></div>
+<div id="ti31-1" style="position: absolute; top: 7570px; left:555px; font-size:12pt; "></div>
+<div id="ti31-1c" style="position: absolute; top: 7625px; left:545px; font-size:12pt; color:#FF0000; "></div>
+<div id="ti31-2ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ti31-2a" disabled / name="address" size="14" value=""　></div>
+<div id="ti31-2b" style="position: absolute; top: 7570px; left:480px; font-size:12pt; "></div>
+<div id="ti31-2" style="position: absolute; top: 7570px; left:490px; font-size:12pt; "></div>
+<div id="ti31-2c" style="position: absolute; top: 7625px; left:480px; font-size:12pt; color:#FF0000; "></div>
+
+<!芦花公園-千歳烏山>
+<div id="ti31-32ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ti31-32a" disabled / name="address" size="14" value=""　></div>
+<div id="ti31-32b" style="position: absolute; top: 7660px; left:545px; font-size:12pt; "></div>
+<div id="ti31-32" style="position: absolute; top: 7660px; left:555px; font-size:12pt; "></div>
+<div id="ti31-32c" style="position: absolute; top: 7715px; left:545px; font-size:12pt; color:#FF0000; "></div>
+<div id="ti32-31ad" style="position: absolute; top:-100px; left:-100px;"><input type="text"  id = "ti32-31a" disabled / name="address" size="14" value=""　></div>
+<div id="ti32-31b" style="position: absolute; top: 7660px; left:480px; font-size:12pt; "></div>
+<div id="ti32-31" style="position: absolute; top: 7660px; left:490px; font-size:12pt; "></div>
+<div id="ti32-31c" style="position: absolute; top: 7715px; left:480px; font-size:12pt; color:#FF0000; "></div>
 
 
 <div style="position: absolute; top: 5590px; left:695px; color:#ffffff; font-size:12pt"><p></p></div>
@@ -859,7 +888,7 @@ background-color: #ffffff;
 <div id="ti26dep25" style="position: absolute; top: 4785px; left:385px; color:#ff0000; font-size:12pt; "></div>
 <div style="position: absolute; top: 4805px; left:130px; color:#ff0000;  font-size:11pt"><p>※時刻表に掲載の内容で表示しています。</p></div>
 
-<div style="position: absolute; top: 7500px; left:1000px; font-size:18pt"><p>　</p></div>
+<div style="position: absolute; top: 7700px; left:1000px; font-size:18pt"><p>　</p></div>
 
 </nobr>
 </font>
@@ -1146,6 +1175,10 @@ case '["odpt.Station:Keio.Sagamihara.KeioTamaCenter"]':
 	break;
 case '["odpt.Station:Toei.Shinjuku.Ojima"]':
 	des = "大";
+	break;
+
+case '["odpt.Station:Toei.Shinjuku.Iwamotocho"]':
+	des = "岩";
 	break;
 case '["odpt.Station:Toei.Shinjuku.Mizue"]':
 	des = "瑞";
@@ -3592,6 +3625,26 @@ case '"E008"': //八幡山
 		}
 	break;
 
+case '"E009"': //芦花公園
+	switch (trid) {
+	case '"1"':
+		nameText = document.getElementById('ti31-1a');
+		target = document.getElementById('ti31-1ad');
+		doc2= document.getElementById("ti31-1"); 
+		doc0= document.getElementById("ti31-1b");  
+		doc1= document.getElementById("ti31-1c"); 
+		break;
+
+	case '"2"':
+		nameText = document.getElementById('ti31-2a');
+		target = document.getElementById('ti31-2ad');
+		doc2= document.getElementById("ti31-2"); 
+		doc0= document.getElementById("ti31-2b");  
+		doc1= document.getElementById("ti31-2c"); 
+		break;
+		}
+	break;
+
 
 
 default:
@@ -4073,7 +4126,6 @@ case '"U006"': //上北沢→桜上水
 	doc1= document.getElementById("ti29-281c"); 
 	}
 	break;
-
 case '"D008"': //上北沢→八幡山
 	nameText = document.getElementById('ti29-30a');
 	target = document.getElementById('ti29-30ad');
@@ -4087,6 +4139,34 @@ case '"U007"': //八幡山→上北沢
 	doc2= document.getElementById("ti30-29"); 
 	doc0= document.getElementById("ti30-29b");  
 	doc1= document.getElementById("ti30-29c"); 
+	break;
+case '"D009"': //八幡山→芦花公園
+	nameText = document.getElementById('ti30-31a');
+	target = document.getElementById('ti30-31ad');
+	doc2= document.getElementById("ti30-31"); 
+	doc0= document.getElementById("ti30-31b");  
+	doc1= document.getElementById("ti30-31c"); 
+	break;
+case '"U008"': //芦花公園→八幡山
+	nameText = document.getElementById('ti31-30a');
+	target = document.getElementById('ti31-30ad');
+	doc2= document.getElementById("ti31-30"); 
+	doc0= document.getElementById("ti31-30b");  
+	doc1= document.getElementById("ti31-30c"); 
+	break;
+case '"D010"': //芦花公園→千歳烏山
+	nameText = document.getElementById('ti31-32a');
+	target = document.getElementById('ti31-32ad');
+	doc2= document.getElementById("ti31-32"); 
+	doc0= document.getElementById("ti31-32b");  
+	doc1= document.getElementById("ti31-32c"); 
+	break;
+case '"U009"': //千歳烏山→芦花公園
+	nameText = document.getElementById('ti32-31a');
+	target = document.getElementById('ti32-31ad');
+	doc2= document.getElementById("ti32-31"); 
+	doc0= document.getElementById("ti32-31b");  
+	doc1= document.getElementById("ti32-31c"); 
 	break;
 
 

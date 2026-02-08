@@ -3375,6 +3375,11 @@ if ( delay == "0"){
 
 
 	} 
+	if ( delay > 9 ){
+		localStorage.removeItem( 'ko' + retsuban + 'tr'  );
+		localStorage.removeItem( 'ko' + retsuban  + 'time' );
+
+	}
 
 
 	nameText = 0;
@@ -3966,6 +3971,12 @@ if ( delay == "0"){
 		localStorage.removeItem( 'ko' + retsuban  + 'time' );
 	}
         info =   '　　'+ dest + '<br/>' +  '　' +　localStorage.getItem( 'ko' + retsuban + 'tr' ) +　 '<br/>' +  '&nbsp;' + type + car +　 '<br/>' +  '　　' ;
+	}
+
+	if ( delay > 9 ){
+		localStorage.removeItem( 'ko' + retsuban + 'tr'  );
+		localStorage.removeItem( 'ko' + retsuban  + 'time' );
+
 	}
 
 

@@ -46,7 +46,7 @@ background-color: #ffffff;
   <body>
 
 <nobr>
-<p> 都営新宿線　[自動更新：15秒]　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024-2026 / Ver.3.00 03/03</p>
+<p> 都営新宿線　[自動更新：15秒]　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024-2026 / Ver.4.00 03/08</p>
 
 <div style="position: absolute; top: 20px; left:10px; font-size:10pt"><p>本Webアプリが利用する公共交通データは、公共交通オープンデータセンターにおいて提供されるものです。交通事業者により提供されたデータを元に</p></div>
 <div style="position: absolute; top: 35px; left:10px; font-size:10pt"><p>していますが、必ずしも正確・完全なものとは限りません。本Webアプリの表示内容について、交通事業者への直接の問合せは行わないでください。</p></div>
@@ -58,6 +58,9 @@ background-color: #ffffff;
 <br>
 <br>
 <div id="ty99d" style="position: absolute; top: -50px; left:-50px; font-size:18pt"　><input type="text"  id = "ty99" disabled / name="address" size="100" value="試験"　></div>
+
+<div id="koshin-T" style="position: absolute; top: 80px; left:370px; color:#000000; font-size:12pt; ">都営更新：ー</div>
+<div id="koshin-K" style="position: absolute; top: 80px; left:650px; color:#000000; font-size:12pt; ">京王更新：ー</div>
 
 
 <!本八幡発車>
@@ -1098,7 +1101,9 @@ request.responseType = "text";
 request.onload = () => {
   if (request.readyState === request.DONE) {
     if (request.status === 200) {
-var data = JSON.parse(request.responseText.replaceAll("odpt:","odpt"));
+var data0 = request.responseText.replaceAll("dc:","dc");
+var data = JSON.parse(data0.replaceAll("odpt:","odpt"));
+
 
 var request3 = new XMLHttpRequest();
 request3.open("GET", "https://api-public.odpt.org/api/v4/odpt:StationTimetable?odpt:station=odpt.Station:Toei.Shinjuku.Motoyawata", true);
@@ -1128,6 +1133,18 @@ request5.onload = () => {
 var data7 = JSON.parse(request5.responseText.replaceAll("odpt:","odpt"));
 
 console.log( data7);
+
+
+//更新時刻
+var koshinT =   JSON.stringify(data[0].dcdate) ;
+koshinT = "都営更新：" + koshinT.replaceAll('-','/');
+koshinT =  koshinT.replaceAll('T',' ');
+koshinT =  koshinT.replaceAll('+09:00','');
+koshinT =  koshinT.replaceAll('"','');
+
+console.log(koshinT);
+document.getElementById("koshin-T").innerHTML = koshinT ;
+
 
 //在線情報の処理
       let info = '';
@@ -3347,6 +3364,13 @@ let info = '';
 let nameText = document.getElementById('ty01-3a');
 let now = Math.floor(Date.now() / 60000) ;
 
+//更新時刻
+var koshinK =  JSON.stringify(data2.up[0].dt[0].yy) + "/" + JSON.stringify(data2.up[0].dt[0].mt) + "/" + JSON.stringify(data2.up[0].dt[0].dy) + " " + JSON.stringify(data2.up[0].dt[0].hh) + ":" + JSON.stringify(data2.up[0].dt[0].mm) + ":" + JSON.stringify(data2.up[0].dt[0].ss) ;
+koshinK = "京王更新：" + koshinK.replaceAll('"','');
+console.log(koshinK);
+document.getElementById("koshin-K").innerHTML = koshinK ;
+
+
 //駅停車
 for ( n = 0; n < len; n++) {
 var stid = JSON.stringify(data2.TS[n].id) ;
@@ -3388,6 +3412,10 @@ default:
 	kind = "　";
 	break;
 }
+
+//化け設定
+var bake = JSON.stringify(data2.TS[n].ps[m].inf) ;
+console.log( bake );
 
 //行先設定
 var dest = JSON.stringify(data2.TS[n].ps[m].ik_tr) ;
@@ -3436,6 +3464,9 @@ case '"054"':
 	break;
 case '"081"':
 	dest = "渋";
+	break;
+case '"093"':
+	dest = "富";
 	break;
 case '"097"':
 	dest = "吉";
@@ -4096,9 +4127,26 @@ doc2.style.color = '#666666'; //文字
 break;
 case '特' :
 doc2.style.color = '#ca2d73'; //文字
+if ( bake == '"この列車は京王多摩センター駅で各駅停車 橋本行きとなります。"'){
+doc2.style.color = '#ffffff'; //文字
+doc2.style.backgroundColor = '#ca2d73'; //背景
+}
+if ( bake == '"この列車は高幡不動駅で各駅停車 京王八王子行きとなります。"'){
+doc2.style.color = '#ffffff'; //文字
+doc2.style.backgroundColor = '#ca2d73'; //背景
+}
+
 break;
 case '急' :
 doc2.style.color = '#0ca73d'; //文字
+if ( bake == '"この列車は京王多摩センター駅で各駅停車 橋本行きとなります。"'){
+doc2.style.color = '#ffffff'; //文字
+doc2.style.backgroundColor = '#0ca73d'; //背景
+}
+if ( bake == '"この列車は高幡不動駅で各駅停車 京王八王子行きとなります。"'){
+doc2.style.color = '#ffffff'; //文字
+doc2.style.backgroundColor = '#0ca73d'; //背景
+}
 break;
 case '区' :
 doc2.style.color = '#cfbc30'; //文字
@@ -4106,9 +4154,15 @@ break;
 case '快' :
 doc2.style.color = '#0000dd'; //文字
 break;
-case 'ラ' :doc2.style.color = '#ffffff'; //文字
-doc2.style.backgroundColor = '#ca2d73'; //背景
+case 'ラ' :
+doc2.style.color = '#ff69b4'; //文字
+doc2.style.backgroundColor = '#000000'; //背景
 break;
+case 'Mt' :
+doc2.style.color = '#ff69b4'; //文字
+doc2.style.backgroundColor = '#000000'; //背景
+break;
+
 
 default:
 break ;
@@ -4166,6 +4220,10 @@ default:
 	break;
 }
 
+//化け設定
+var bake = JSON.stringify(data2.TB[n].ps[m].inf) ;
+console.log( bake );
+
 
 //行先設定
 var dest = JSON.stringify(data2.TB[n].ps[m].ik_tr) ;
@@ -4214,6 +4272,9 @@ case '"054"':
 	break;
 case '"081"':
 	dest = "渋";
+	break;
+case '"093"':
+	dest = "富";
 	break;
 case '"097"':
 	dest = "吉";
@@ -4750,9 +4811,27 @@ doc2.style.color = '#666666'; //文字
 break;
 case '特' :
 doc2.style.color = '#ca2d73'; //文字
+if ( bake == '"この列車は京王多摩センター駅で各駅停車 橋本行きとなります。"'){
+doc2.style.color = '#ffffff'; //文字
+doc2.style.backgroundColor = '#ca2d73'; //背景
+}
+if ( bake == '"この列車は高幡不動駅で各駅停車 京王八王子行きとなります。"'){
+doc2.style.color = '#ffffff'; //文字
+doc2.style.backgroundColor = '#ca2d73'; //背景
+}
+
 break;
 case '急' :
 doc2.style.color = '#0ca73d'; //文字
+if ( bake == '"この列車は京王多摩センター駅で各駅停車 橋本行きとなります。"'){
+doc2.style.color = '#ffffff'; //文字
+doc2.style.backgroundColor = '#0ca73d'; //背景
+}
+if ( bake == '"この列車は高幡不動駅で各駅停車 京王八王子行きとなります。"'){
+doc2.style.color = '#ffffff'; //文字
+doc2.style.backgroundColor = '#0ca73d'; //背景
+}
+
 break;
 case '区' :
 doc2.style.color = '#cfbc30'; //文字
@@ -4760,9 +4839,15 @@ break;
 case '快' :
 doc2.style.color = '#0000dd'; //文字
 break;
-case 'ラ' :doc2.style.color = '#ffffff'; //文字
-doc2.style.backgroundColor = '#ca2d73'; //背景
+case 'ラ' :
+doc2.style.color = '#ff69b4'; //文字
+doc2.style.backgroundColor = '#000000'; //背景
 break;
+case 'Mt' :
+doc2.style.color = '#ff69b4'; //文字
+doc2.style.backgroundColor = '#000000'; //背景
+break;
+
 
 
 default:

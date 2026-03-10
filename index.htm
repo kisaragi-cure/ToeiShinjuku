@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" content="noindex,noarchive,nofollow" />
-    <title>如月在線モニタ(S-KO)</title>
+    <title>CK在線情報(S-KO)</title>
 	<link rel="icon" href="S.ico">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="refresh" content="15">
@@ -408,6 +408,8 @@ background-color: #ffffff;
 <div id="ti16-15b" style="position: absolute; top: 3725px; left:475px; font-size:12pt; "></div>
 <div id="ti16-15" style="position: absolute; top: 3725px; left:485px; font-size:12pt; "></div>
 <div id="ti16-15c" style="position: absolute; top: 3780px; left:475px; font-size:12pt; color:#FF0000; "></div>
+
+<div style="position: absolute; top: 3800px; left:650px; font-size:24pt"><input type="button" id = "mita" value="都営三田線" class="asakusabutton"></div>
 
 <div style="position: absolute; top: 3800px; left:310px;  color:#ff0000; font-size:14pt"><p>●</p></div> <!急行停車駅>
 <div style="position: absolute; top: 3820px; left:310px; font-size:18pt"><p>神保町</p></div>
@@ -1094,6 +1096,11 @@ document.getElementById("asakusa").addEventListener("click", function () {
   location.href ="https://kisaragi-cure.github.io/ToeiAsakusa";
 }, false);
 
+document.getElementById("mita").addEventListener("click", function () {
+  location.href ="https://kisaragi-cure.github.io/ToeiMita";
+}, false);
+
+
 var request = new XMLHttpRequest();
 request.open("GET", "https://api.odpt.org/api/v4/odpt:Train?odpt:railway=odpt.Railway:Toei.Shinjuku&acl:consumerKey=qkpjriztbhvaxwjzum1oluug1hnfvwfq3ztxnsb56xtbt6qve7zdwv8bb73ajavy", true);
 request.responseType = "text";
@@ -1131,8 +1138,6 @@ request5.onload = () => {
   if (request5.readyState === request3.DONE) {
     if (request5.status === 200) {
 var data7 = JSON.parse(request5.responseText.replaceAll("odpt:","odpt"));
-
-console.log( data7);
 
 
 //更新時刻
@@ -3080,7 +3085,14 @@ break ;
 	} 
 
 	if ( trid == '"odpt.RailDirection:Westbound"' ) {
+
+	if (localStorage.getItem( 'ts' + unban + 'sy' ) == '急1'){
+	doc2.innerHTML= '急' ;
+	doc2.style.color = '#ffffff'; //文字
+	doc2.style.backgroundColor = '#666666'; //背景
+	} else {
 	doc2.innerHTML= localStorage.getItem( 'ts' + unban + 'sy' ) ;
+	}
         info =   '　　'+ des + '<br/>' +  '　' +　unban +　 '<br/>' +  '=' + localStorage.getItem( 'ts' + unban + 'tr' ) +　 '<br/>' +  '　　' ;
 	doc0.innerHTML= info + " ";
 	}
@@ -3592,6 +3604,14 @@ case '"E102"': //曙橋
 //都線結合
 	sessionStorage.setItem('E102tr', retsuban);
 	sessionStorage.setItem('E102sy', kind);
+
+if ( bake == '"この列車は新線新宿駅で急行 橋本行きとなります。"'){
+	sessionStorage.setItem('E102sy', "急");
+}
+if ( bake == '"この列車は新線新宿駅で急行 橋本行きに、京王多摩センター駅で各駅停車 橋本行きとなります。"'){
+	sessionStorage.setItem('E102sy', "急1");
+}
+
 	sessionStorage.setItem('D102tr', '');
 	sessionStorage.setItem('D102time', now);
 	sessionStorage.setItem('D102sy', '');
@@ -3601,6 +3621,15 @@ case '"E101"': //新宿三丁目
 //都線結合
 	sessionStorage.setItem('E101tr', retsuban);
 	sessionStorage.setItem('E101sy', kind);
+
+if ( bake == '"この列車は新線新宿駅で急行 橋本行きとなります。"'){
+	sessionStorage.setItem('E101sy', "急");
+}
+if ( bake == '"この列車は新線新宿駅で急行 橋本行きに、京王多摩センター駅で各駅停車 橋本行きとなります。"'){
+	sessionStorage.setItem('E101sy', "急1");
+}
+
+
 	sessionStorage.setItem('D101tr', '');
 	sessionStorage.setItem('D101sy', '');
 	nameText = 0;
@@ -4384,14 +4413,28 @@ if ( delay == "0"){
 
 
 	switch (scid) {
-case '"D102"': //市ヶ谷→曙橋
+case '"D102"': //市ヶ谷→曙橋 
+//都線結合
 	sessionStorage.setItem('D102tr', retsuban);
 	sessionStorage.setItem('D102sy', kind);
+if ( bake == '"この列車は新線新宿駅で急行 橋本行きとなります。"'){
+	sessionStorage.setItem('D102sy', "急");
+}
+if ( bake == '"この列車は新線新宿駅で急行 橋本行きに、京王多摩センター駅で各駅停車 橋本行きとなります。"'){
+	sessionStorage.setItem('D102sy', "急1");
+}
 	break;
 case '"D101"': //曙橋→新宿三丁目	  
 //都線結合
 	sessionStorage.setItem('D101tr', retsuban);
 	sessionStorage.setItem('D101sy', kind);
+if ( bake == '"この列車は新線新宿駅で急行 橋本行きとなります。"'){
+	sessionStorage.setItem('D101sy', "急");
+}
+if ( bake == '"この列車は新線新宿駅で急行 橋本行きに、京王多摩センター駅で各駅停車 橋本行きとなります。"'){
+	sessionStorage.setItem('D101sy', "急1");
+}
+
 	sessionStorage.setItem('E102tr', '');
 	sessionStorage.setItem('E102sy', '');
 	break;
